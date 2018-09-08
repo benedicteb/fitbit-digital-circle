@@ -1,0 +1,15 @@
+text {
+  text-length: 32;
+  fill: "#7FFF00";
+  font-family: "SevilleSharp-Book";
+}
+
+.marker {
+  fill: "#618B25";
+  stroke-width: 3;
+  display: inline;
+}
+
+.background {
+  fill: "#618B25";
+}

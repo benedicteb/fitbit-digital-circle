@@ -1,0 +1,22 @@
+{
+  "fitbit": {
+    "appUUID": "c04c199b-f8d6-4294-94a6-75bc3ce0739b",
+    "appType": "clockface",
+    "appDisplayName": "Digital circle",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [
+      "access_activity",
+      "access_heart_rate"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Digital circle"
+      }
+    }
+  }
+}

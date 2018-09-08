@@ -1,0 +1,14 @@
+<svg viewport-fill="black">
+  <text id="txt-time" class="foreground" text-anchor="middle" x="50%" y="50%+30" font-size="100" />
+  <text id="txt-week" class="background" text-anchor="middle" x="50%" y="32%" font-size="30" />
+  <text id="txt-date" class="background" text-anchor="middle" x="50%" y="75%" font-size="50" />
+  <text id="txt-weekday" class="background" text-anchor="middle" x="50%" y="88%" font-size="30" />
+  
+  <image x="3" y="276" class="background" width="22" height="22" href="icons/stat_hr_open_24px.png" />
+  <image x="275" y="276" class="background" width="22" height="22" href="icons/stat_steps_open_32px.png" />
+  
+  <text id="txt-hr" class="background" text-anchor="start" x="27" y="294" font-family="SevilleSharp-Bold" font-size="22" />
+  <text id="txt-steps" class="background" text-anchor="end" x="273" y="294" font-family="SevilleSharp-Bold" font-size="22" />
+  
+  <link rel="import" href="markers.gui" />
+</svg>
