@@ -24,3 +24,5 @@ case $step in
 esac
 
 git tag -a $next_version -m "Released $next_version"
+
+echo "Released $next_version"
