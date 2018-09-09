@@ -5,14 +5,8 @@
     "appDisplayName": "Digital circle",
     "iconFile": "resources/icon.png",
     "wipeColor": "",
-    "requestedPermissions": [
-      "access_activity",
-      "access_heart_rate"
-    ],
-    "buildTargets": [
-      "higgs",
-      "meson"
-    ],
+    "requestedPermissions": ["access_activity", "access_heart_rate"],
+    "buildTargets": ["meson"],
     "i18n": {
       "en": {
         "name": "Digital circle"

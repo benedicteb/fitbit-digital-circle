@@ -6,10 +6,13 @@ import { today, goals } from "user-activity";
 import { HeartRateSensor } from "heart-rate";
 
 import { padNumber } from "../common/utils";
+import getMonthShortName from "../common/getMonthShortName.js";
+import { debug } from "../common/log.js";
 
-import getMonthShortName from "getMonthShortName";
 import getWeekdayName from "getWeekdayName";
 import getWeekNumber from "getWeekNumber";
+import { initMessaging } from "communication";
+import { readLocalStorage } from "localStorage";
 
 const HR_MONITOR = new HeartRateSensor();
 
@@ -31,14 +34,13 @@ const fillMarkerCircle = factor => {
   }
 };
 
-const initClock = () => {
+const initClock = localStorage => {
   // Update the clock every minute
   clock.granularity = "seconds";
 
   const txtTime = document.getElementById("txt-time");
   const txtDate = document.getElementById("txt-date");
   const txtWeek = document.getElementById("txt-week");
-  const txtWeekday = document.getElementById("txt-weekday");
   const txtSteps = document.getElementById("txt-steps");
 
   // Update the <text> element every tick with the current time
@@ -47,6 +49,7 @@ const initClock = () => {
     const steps = today.local.steps;
     const stepGoal = goals.steps;
 
+    const year = now.getFullYear();
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
@@ -56,10 +59,18 @@ const initClock = () => {
     const dayName = getWeekdayName(now.getDay());
 
     txtTime.text = `${padNumber(hours)}:${padNumber(minutes)}`;
-    txtDate.text = `${getMonthShortName(month)} ${date}`;
-    txtWeek.text = `Wk ${weekNumber}`;
-    txtWeekday.text = dayName;
+    txtWeek.text = `${dayName} ${weekNumber}`;
     txtSteps.text = steps;
+
+    if ("dateFormat" in localStorage) {
+      if (localStorage.dateFormat === "utc") {
+        txtDate.text = `${year}-${padNumber(month + 1)}-${padNumber(date)}`;
+      } else {
+        txtDate.text = `${getMonthShortName(month)} ${date}`;
+      }
+    } else {
+      txtDate.text = `${getMonthShortName(month)} ${date}`;
+    }
 
     fillMarkerCircle(seconds / 60.0);
   };
@@ -68,10 +79,10 @@ const initClock = () => {
 const initDisplay = (onWake, onSleep) => {
   display.addEventListener("change", () => {
     if (display.on) {
-      console.log("Starting HR monitor");
+      debug("Starting HR monitor");
       HR_MONITOR.start();
     } else {
-      console.log("Stopping HR monitor");
+      debug("Stopping HR monitor");
       HR_MONITOR.stop();
     }
   });
@@ -89,7 +100,7 @@ const initHr = () => {
       const heartRate = HR_MONITOR.heartRate;
     }
 
-    console.log(`Heart rate: ${heartRate}`);
+    debug(`Heart rate: ${heartRate}`);
     txtHr.text = heartRate;
 
     lastHrReading = timestamp;
@@ -98,6 +109,9 @@ const initHr = () => {
   HR_MONITOR.start();
 };
 
+const localStorage = readLocalStorage();
+
+initMessaging(localStorage);
 initDisplay();
-initClock();
+initClock(localStorage);
 initHr();
