@@ -5,12 +5,20 @@
     "appDisplayName": "Digital circle",
     "iconFile": "resources/icon.png",
     "wipeColor": "",
-    "requestedPermissions": ["access_activity", "access_heart_rate"],
-    "buildTargets": ["meson"],
+    "requestedPermissions": [
+      "access_activity",
+      "access_heart_rate"
+    ],
+    "buildTargets": [
+      "meson"
+    ],
     "i18n": {
       "en": {
         "name": "Digital circle"
       }
     }
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~3.0.0"
   }
 }

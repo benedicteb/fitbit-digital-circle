@@ -2,7 +2,7 @@ import * as messaging from "messaging";
 
 import { debug, error } from "../common/log.js";
 
-import { writeLocalStorage } from "localStorage";
+import { writeLocalStorage } from "./localStorage";
 
 const initMessaging = localStorage => {
   messaging.peerSocket.onmessage = evt => {

@@ -9,10 +9,10 @@ import { padNumber } from "../common/utils";
 import getMonthShortName from "../common/getMonthShortName.js";
 import { debug } from "../common/log.js";
 
-import getWeekdayName from "getWeekdayName";
-import getWeekNumber from "getWeekNumber";
-import { initMessaging } from "communication";
-import { readLocalStorage } from "localStorage";
+import getWeekdayName from "./getWeekdayName";
+import getWeekNumber from "./getWeekNumber";
+import { initMessaging } from "./communication";
+import { readLocalStorage } from "./localStorage";
 
 const HR_MONITOR = new HeartRateSensor();
 

@@ -1,4 +1,4 @@
-import config from "../config.json";
+import config from "../config.js";
 
 const debug = message => {
   if (config.debug) {

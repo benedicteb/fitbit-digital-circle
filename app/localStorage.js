@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, statSync } from "fs";
 
 import { debug } from "../common/log.js";
 
-import config from "../config.json";
+import config from "../config.js";
 
 const readLocalStorage = () => {
   const filename = config.localStorageFile;
